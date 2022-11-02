@@ -28,7 +28,7 @@ def move_board_up(board):
         col = slide_up(combine_up(slide_up(col)))
         
         for j in range(len(board)):
-            moved_board[j][i] = input[j][0]
+            moved_board[j][i] = col[j][0]
         
     return moved_board
         
@@ -42,7 +42,7 @@ def move_board_down(board):
         col = slide_down(combine_down(slide_down(col)))
         
         for j in range(len(board)):
-            moved_board[j][i] = input[j][0]
+            moved_board[j][i] = col[j][0]
         
     return moved_board
     
