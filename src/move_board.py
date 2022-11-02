@@ -27,15 +27,11 @@ def move_board_up(board):
     moved_board = board
     
     for i in range(len(board)):
-        input = []
-
-        for j in range(len(board)):
-            input.append([board[j][i]])
+        col = [[board[x][i]] for x in range(0, len(board))]
             
-        input = slide_up(input)
-        input = combine_up(input)
-        input = slide_up(input)
-        
+        col = slide_up(col)
+        col = combine_up(col)
+        col = slide_up(col)
         
         for j in range(len(board)):
             moved_board[j][i] = input[j][0]
@@ -47,15 +43,11 @@ def move_board_down(board):
     moved_board = board
     
     for i in range(len(board)):
-        input = []
-
-        for j in range(len(board)):
-            input.append([board[j][i]])
-            
-        input = slide_down(input)
-        input = combine_down(input)
-        input = slide_down(input)
+        col = [[board[x][i]] for x in range(0, len(board))]
         
+        col = slide_down(col)
+        col = combine_down(col)
+        col = slide_down(col)
         
         for j in range(len(board)):
             moved_board[j][i] = input[j][0]
