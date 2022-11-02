@@ -23,7 +23,7 @@ def move_board_up(board):
     moved_board = board
     
     for i in range(len(board)):
-        col = [[board[x][i]] for x in range(0, len(board))]
+        col = [[board[j][i]] for j in range(0, len(board))]
             
         col = slide_up(combine_up(slide_up(col)))
         
@@ -37,7 +37,7 @@ def move_board_down(board):
     moved_board = board
     
     for i in range(len(board)):
-        col = [[board[x][i]] for x in range(0, len(board))]
+        col = [[board[j][i]] for j in range(0, len(board))]
         
         col = slide_down(combine_down(slide_down(col)))
         
