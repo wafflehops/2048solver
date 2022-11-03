@@ -1,5 +1,5 @@
-from slide import *
-from combine import *
+from src.slide import *
+from src.combine import *
 
 def move_board_right(board):
     moved_board = board
