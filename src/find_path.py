@@ -6,6 +6,7 @@ class Moves(Enum):
     RIGHT = "2"
     DOWN = "3"
     LEFT = "4"
+    SKIP = "5"
     
 
 def game_won(board):
@@ -31,17 +32,18 @@ def get_key(board):
 
 def find_path(board):
     memo = {}
-    return _find_path(board, "", 0, memo)
+    return _find_path(board, Moves.SKIP, 0, memo)
 
-def _find_path(board, move_list, count, memo):
+def _find_path(board, last_move, count, memo):
     if count > 13:
         return ""
     
     if game_won(board):
-        return move_list
+        return last_move.value
     
-    min_moves = "111111111111"
+    min_moves = "111111111111111"
     for move in Moves:
+        if move == Moves.SKIP: continue
         if move == Moves.UP: moved_board = move_board_up(board)
         if move == Moves.RIGHT: moved_board = move_board_right(board)
         if move == Moves.DOWN: moved_board = move_board_down(board)
@@ -49,35 +51,25 @@ def _find_path(board, move_list, count, memo):
         
         if moved_board == board: continue
         
-        remaining_moves = _find_path(moved_board, move_list + move.value, count + 1, memo)
+        remaining_moves = _find_path(moved_board, move, count + 1, memo)
+        if remaining_moves == "": continue
         
-        print(move_list + move.value)
+        
         if len(remaining_moves) < len(min_moves):
             min_moves = remaining_moves
         
-    return min_moves
+    if min_moves == "":
+        return ""
+    else:
+        return last_move.value + min_moves if last_move.value != "5" else min_moves
         
 
-    
-    
-                
-    
-    
-
 board = [
-    [2, None, None, None],
-    [2, None, None, None],
     [None, None, None, None],
-    [None, None, None, None]
+    [None, 8, 16, 4],
+    [None, None, None, 32],
+    [None, 4, None, None]
 ]
-
-
-
-
-
-
-
-
 
 
 shortest_path = find_path(board)
