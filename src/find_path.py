@@ -1,4 +1,4 @@
-from move_board import *
+from src.move_board import *
 from enum import Enum
 
 class Moves(Enum):
@@ -37,7 +37,6 @@ def find_path(board):
 def _find_path(board, last_move, count, memo):
     if count > 13:
         return ""
-    
     if game_won(board):
         return last_move.value
     
