@@ -14,7 +14,7 @@ def game_won(board):
     
     for i in range(0, len(board)):
         for j  in range(0, len(board)):
-            if (board[i][j] != None):
+            if (board[i][j] != 0):
                 num_tiles += 1
             
     
@@ -63,14 +63,14 @@ def _find_path(board, last_move, count, memo):
         return last_move.value + min_moves if last_move.value != "5" else min_moves
         
 
-board = [
-    [None, None, None, None],
-    [None, 8, 16, 4],
-    [None, None, None, 32],
-    [None, 4, None, None]
-]
+# board = [
+#     [None, None, None, None],
+#     [None, 8, 16, 4],
+#     [None, None, None, 32],
+#     [None, 4, None, None]
+# ]
 
 
-shortest_path = find_path(board)
-print(shortest_path)
+# shortest_path = find_path(board)
+# print(shortest_path)
 
