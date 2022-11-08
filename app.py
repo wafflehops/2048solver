@@ -9,8 +9,7 @@ class Game(tk.Frame):
         tk.Frame.__init__(self)
         self.grid()
         self.master.title('2048 solver')
-        self.main_grid = tk.Frame(
-            self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
+        self.main_grid = tk.Frame(self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
         self.main_grid.grid(pady=(80, 0))
         self.make_GUI()
         self.master.bind("<Left>", self.left)
@@ -62,7 +61,7 @@ class Game(tk.Frame):
         
     def solve(self):
        self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(4)] for i in range(4)]
-       print('solved: ' + find_path(self.matrix))
+       print(find_path_bfs(self.matrix))
     
 
     def update_GUI(self):
