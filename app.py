@@ -51,10 +51,12 @@ class Game(tk.Frame):
         else:
             next_number = current_number * 2
 
-        button.configure(text="" if next_number == 0 else str(next_number))
-        button.configure(bg=c.CELL_COLORS[next_number])
-        button.configure(fg=c.CELL_NUMBER_COLORS[next_number])
-
+        button.configure(
+            text="" if next_number == 0 else str(next_number),
+            bg=c.CELL_COLORS[next_number],
+            fg=c.CELL_NUMBER_COLORS[next_number]
+        )
+        
         self.matrix[row][col] = next_number
 
         
