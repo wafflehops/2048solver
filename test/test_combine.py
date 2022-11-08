@@ -4,13 +4,13 @@ from src.combine import *
 class CombineTests(unittest.TestCase):
     def test_combine_right(self):
         before_and_after_combining = [
-            [[None, None, 2, 2], [None, None, None, 4]],
-            [[2, 2, 2, 2], [None, 4, None, 4]],
-            [[None, 4, 4, 2], [None, None, 8, 2]],
+            [[0, 0, 2, 2], [0, 0, 0, 4]],
+            [[2, 2, 2, 2], [0, 4, 0, 4]],
+            [[0, 4, 4, 2], [0, 0, 8, 2]],
             [[8, 2, 4, 8], [8, 2, 4, 8]],
-            [[None, 2, 4, 4], [None, 2, None, 8]],
-            [[None, 2, 2, 8], [None, None, 4, 8]],
-            [[None, None, None, None], [None, None, None, None]],
+            [[0, 2, 4, 4], [0, 2, 0, 8]],
+            [[0, 2, 2, 8], [0, 0, 4, 8]],
+            [[0, 0, 0, 0], [0, 0, 0, 0]],
         ]
         
         for before, after in before_and_after_combining:
@@ -19,13 +19,13 @@ class CombineTests(unittest.TestCase):
         
     def test_combine_left(self):
         before_and_after_combining = [
-            [[2, 2, None, None], [4, None, None, None]],
-            [[2, 2, 2, 2], [4, None, 4, None]],
-            [[2, 4, 4, None], [2, 8, None, None]],
+            [[2, 2, 0, 0], [4, 0, 0, 0]],
+            [[2, 2, 2, 2], [4, 0, 4, 0]],
+            [[2, 4, 4, 0], [2, 8, 0, 0]],
             [[8, 2, 4, 8], [8, 2, 4, 8]],
-            [[4, 4, 2, None], [8, None, 2, None]],
-            [[8, 2, 2, None], [8, 4, None, None]],
-            [[None, None, None, None], [None, None, None, None]],
+            [[4, 4, 2, 0], [8, 0, 2, 0]],
+            [[8, 2, 2, 0], [8, 4, 0, 0]],
+            [[0, 0, 0, 0], [0, 0, 0, 0]],
         ]
         
         for before, after in before_and_after_combining:
@@ -34,13 +34,13 @@ class CombineTests(unittest.TestCase):
     
     def test_col_combines_up(self):
         before_and_after_combining = [
-           [[[2], [2], [None], [None]], [[4], [None], [None], [None]]],
-           [[[8], [8], [8], [2]], [[16], [None], [8], [2]]],
-           [[[2], [2], [2], [2]], [[4], [None], [4], [None]]],
-           [[[None], [None], [None], [None]], [[None], [None], [None], [None]]],
+           [[[2], [2], [0], [0]], [[4], [0], [0], [0]]],
+           [[[8], [8], [8], [2]], [[16], [0], [8], [2]]],
+           [[[2], [2], [2], [2]], [[4], [0], [4], [0]]],
+           [[[0], [0], [0], [0]], [[0], [0], [0], [0]]],
            [[[2], [4], [8], [2]], [[2], [4], [8], [2]]],
-           [[[2], [4], [4], [None]], [[2], [8], [None], [None]]],
-           [[[4], [4], [2], [None]], [[8], [None], [2], [None]]],
+           [[[2], [4], [4], [0]], [[2], [8], [0], [0]]],
+           [[[4], [4], [2], [0]], [[8], [0], [2], [0]]],
         ]
         
         for before, after in before_and_after_combining:
@@ -49,13 +49,13 @@ class CombineTests(unittest.TestCase):
                 
     def test_col_combines_down(self):
         before_and_after_combining = [
-           [[[None], [None], [2], [2]], [[None], [None], [None], [4]]],
-           [[[2], [8], [8], [8]], [[2], [8], [None], [16]]],
-           [[[2], [2], [2], [2]], [[None], [4], [None], [4]]],
-           [[[None], [None], [None], [None]], [[None], [None], [None], [None]]],
+           [[[0], [0], [2], [2]], [[0], [0], [0], [4]]],
+           [[[2], [8], [8], [8]], [[2], [8], [0], [16]]],
+           [[[2], [2], [2], [2]], [[0], [4], [0], [4]]],
+           [[[0], [0], [0], [0]], [[0], [0], [0], [0]]],
            [[[2], [4], [8], [2]], [[2], [4], [8], [2]]],
-           [[[None], [4], [4], [2]], [[None], [None], [8], [2]]],
-           [[[None], [2], [4], [4]], [[None], [2], [None], [8]]],
+           [[[0], [4], [4], [2]], [[0], [0], [8], [2]]],
+           [[[0], [2], [4], [4]], [[0], [2], [0], [8]]],
         ]
         
         for before, after in before_and_after_combining:

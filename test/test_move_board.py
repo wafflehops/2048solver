@@ -4,8 +4,8 @@ from src.move_board import *
 class CombineTests(unittest.TestCase):
     def test_board_moves_right(self):
         before_and_after_moving = [
-           [[[None, None, None, 2], [2, None, None, None], [8, 8, 2, None], [2, 4, None, None]], [[None, None, None, 2], [None, None, None, 2], [None, None, 16, 2], [None, None, 2, 4]]],
-           [[[4, None, None, None], [4, 2, None, 2], [16, 2, 4, None], [8, 4, 2, None]], [[None, None, None, 4], [None, None, 4, 4], [None, 16, 2, 4], [None, 8, 4, 2]]],
+           [[[0, 0, 0, 2], [2, 0, 0, 0], [8, 8, 2, 0], [2, 4, 0, 0]], [[0, 0, 0, 2], [0, 0, 0, 2], [0, 0, 16, 2], [0, 0, 2, 4]]],
+           [[[4, 0, 0, 0], [4, 2, 0, 2], [16, 2, 4, 0], [8, 4, 2, 0]], [[0, 0, 0, 4], [0, 0, 4, 4], [0, 16, 2, 4], [0, 8, 4, 2]]],
         ]
 
         for before, after in before_and_after_moving:
@@ -14,8 +14,8 @@ class CombineTests(unittest.TestCase):
 
     def test_board_moves_left(self):
         before_and_after_moving = [
-           [[[None, 2, 8, 4], [None, 4, 16, 8], [None, None, 2, 4], [None, None, None, 2]], [[2, 8, 4, None], [4, 16, 8, None], [2, 4, None, None], [2, None, None, None]]],
-           [[[2, None, None, None], [None, None, None, 8], [None, 4, None, 16], [None, 2, 8, 2]], [[2, None, None, None], [8, None, None, None], [4, 16, None, None], [2, 8, 2, None]]],
+           [[[0, 2, 8, 4], [0, 4, 16, 8], [0, 0, 2, 4], [0, 0, 0, 2]], [[2, 8, 4, 0], [4, 16, 8, 0], [2, 4, 0, 0], [2, 0, 0, 0]]],
+           [[[2, 0, 0, 0], [0, 0, 0, 8], [0, 4, 0, 16], [0, 2, 8, 2]], [[2, 0, 0, 0], [8, 0, 0, 0], [4, 16, 0, 0], [2, 8, 2, 0]]],
         ]
 
         for before, after in before_and_after_moving:
@@ -24,8 +24,8 @@ class CombineTests(unittest.TestCase):
                     
     def test_board_moves_up(self):
         before_and_after_moving = [
-           [[[2, None, None, None], [2, 2, None, None], [8, 16, 4, None], [8, 8, 8, None]], [[4, 2, 4, None], [16, 16, 8, None], [None, 8, None, None], [None, None, None, None]]],
-           [[[None, None, None, None], [2, 4, None, None], [4, 16, 2, None], [4, 4, 32, 2]], [[2, 4, 2, 2], [8, 16, 32, None], [None, 4, None, None], [None, None, None, None]]],
+           [[[2, 0, 0, 0], [2, 2, 0, 0], [8, 16, 4, 0], [8, 8, 8, 0]], [[4, 2, 4, 0], [16, 16, 8, 0], [0, 8, 0, 0], [0, 0, 0, 0]]],
+           [[[0, 0, 0, 0], [2, 4, 0, 0], [4, 16, 2, 0], [4, 4, 32, 2]], [[2, 4, 2, 2], [8, 16, 32, 0], [0, 4, 0, 0], [0, 0, 0, 0]]],
         ]
 
         for before, after in before_and_after_moving:
@@ -34,8 +34,8 @@ class CombineTests(unittest.TestCase):
     
     def test_board_moves_down(self):
         before_and_after_moving = [
-           [[[2, 4, 2, 2], [8, 16, 32, None], [None, 4, None, None], [None, 4, None, None]], [[None, None, None, None], [None, 4, None, None], [2, 16, 2, None], [8, 8, 32, 2]]],
-           [[[2, 8, 4, 2], [8, 32, 16, None], [8, 2, None, None], [None, 2, None, None]], [[None, None, None, None], [None, 8, None, None], [2, 32, 4, None], [16, 4, 16, 2]]],
+           [[[2, 4, 2, 2], [8, 16, 32, 0], [0, 4, 0, 0], [0, 4, 0, 0]], [[0, 0, 0, 0], [0, 4, 0, 0], [2, 16, 2, 0], [8, 8, 32, 2]]],
+           [[[2, 8, 4, 2], [8, 32, 16, 0], [8, 2, 0, 0], [0, 2, 0, 0]], [[0, 0, 0, 0], [0, 8, 0, 0], [2, 32, 4, 0], [16, 4, 16, 2]]],
         ]
 
         for before, after in before_and_after_moving:

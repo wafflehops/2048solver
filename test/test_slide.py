@@ -7,11 +7,11 @@ class SlideTests(unittest.TestCase):
         
     def test_row_slides_right(self):
         before_and_after_sliding = [
-            [[2, None, None, None], [None, None, None, 2]],
-            [[2, 2, None, 2], [None, 2, 2, 2]],
-            [[4, None, 4, None], [None, None, 4, 4]],
+            [[2, 0, 0, 0], [0, 0, 0, 2]],
+            [[2, 2, 0, 2], [0, 2, 2, 2]],
+            [[4, 0, 4, 0], [0, 0, 4, 4]],
             [[8, 2, 4, 8], [8, 2, 4, 8]],
-            [[None, None, None, None], [None, None, None, None]],
+            [[0, 0, 0, 0], [0, 0, 0, 0]],
         ]
         
         for before, after in before_and_after_sliding:
@@ -20,11 +20,11 @@ class SlideTests(unittest.TestCase):
 
     def test_row_slides_left(self):
         before_and_after_sliding = [
-            [[2, None, 2, None], [2, 2, None, None]],
-            [[2, 2, None, 2], [2, 2, 2, None]],
-            [[None, None, 4, 4], [4, 4, None, None]],
+            [[2, 0, 2, 0], [2, 2, 0, 0]],
+            [[2, 2, 0, 2], [2, 2, 2, 0]],
+            [[0, 0, 4, 4], [4, 4, 0, 0]],
             [[8, 2, 4, 8], [8, 2, 4, 8]],
-            [[None, None, None, None], [None, None, None, None]],
+            [[0, 0, 0, 0], [0, 0, 0, 0]],
         ]
         
         for before, after in before_and_after_sliding:
@@ -33,10 +33,10 @@ class SlideTests(unittest.TestCase):
                 
     def test_col_slides_up(self):
         before_and_after_sliding = [
-           [[[None], [None], [None], [2]], [[2], [None], [None], [None]]],
-           [[[4], [None], [8], [2]], [[4], [8], [2], [None]]],
-           [[[None], [4], [None], [2]], [[4], [2], [None], [None]]],
-           [[[None], [None], [None], [None]], [[None], [None], [None], [None]]],
+           [[[0], [0], [0], [2]], [[2], [0], [0], [0]]],
+           [[[4], [0], [8], [2]], [[4], [8], [2], [0]]],
+           [[[0], [4], [0], [2]], [[4], [2], [0], [0]]],
+           [[[0], [0], [0], [0]], [[0], [0], [0], [0]]],
            [[[2], [4], [8], [2]], [[2], [4], [8], [2]]],
         ]
         
@@ -46,10 +46,10 @@ class SlideTests(unittest.TestCase):
     
     def test_col_slides_down(self):
         before_and_after_sliding = [
-           [[[2], [None], [None], [None]], [[None], [None], [None], [2]]],
-           [[[4], [None], [8], [2]], [[None], [4], [8], [2]]],
-           [[[None], [4], [None], [2]], [[None], [None], [4], [2]]],
-           [[[None], [None], [None], [None]], [[None], [None], [None], [None]]],
+           [[[2], [0], [0], [0]], [[0], [0], [0], [2]]],
+           [[[4], [0], [8], [2]], [[0], [4], [8], [2]]],
+           [[[0], [4], [0], [2]], [[0], [0], [4], [2]]],
+           [[[0], [0], [0], [0]], [[0], [0], [0], [0]]],
            [[[2], [4], [8], [2]], [[2], [4], [8], [2]]],
         ]
         

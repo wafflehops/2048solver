@@ -63,14 +63,3 @@ def _find_path(board, last_move, count, memo):
         return last_move.value + min_moves if last_move.value != "5" else min_moves
         
 
-# board = [
-#     [None, None, None, None],
-#     [None, 8, 16, 4],
-#     [None, None, None, 32],
-#     [None, 4, None, None]
-# ]
-
-
-# shortest_path = find_path(board)
-# print(shortest_path)
-
