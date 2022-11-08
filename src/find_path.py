@@ -61,5 +61,5 @@ def _find_path(board, last_move, count, memo):
         return ""
     else:
         return last_move.value + min_moves if last_move.value != "5" else min_moves
-        
+    
 
