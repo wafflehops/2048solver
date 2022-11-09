@@ -2,13 +2,7 @@ from src.move_board import *
 from enum import Enum
 from collections import deque
 
-class Moves(Enum):
-    UP = "1"
-    RIGHT = "2"
-    DOWN = "3"
-    LEFT = "4"
-    SKIP = "5"
-    
+movement_funcs = [move_board_up, move_board_right, move_board_down, move_board_left]    
 
 def game_won(board):
     num_tiles = 0
@@ -77,9 +71,8 @@ def find_path_bfs(board):
         if len(moves) > 12:
             return "unsolvable within 12 moves"
 
-        queue.append((move_board_up(state), moves + "1"))
-        queue.append((move_board_right(state), moves + "2"))
-        queue.append((move_board_down(state), moves + "3"))
-        queue.append((move_board_left(state), moves + "4"))
+        for direction, move, in enumerate(movement_funcs, start=1):
+            queue.append( (move(state), moves + str(direction)) )
+
         
         
