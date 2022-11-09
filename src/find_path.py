@@ -1,8 +1,6 @@
 from src.move_board import *
-from enum import Enum
 from collections import deque
-
-movement_funcs = [move_board_up, move_board_right, move_board_down, move_board_left]    
+   
 
 def game_won(board):
     num_tiles = 0
@@ -61,6 +59,8 @@ def get_key(board):
 
 def find_path_bfs(board):
     queue = deque( [(board, "")] )
+
+    movement_funcs = [move_board_up, move_board_right, move_board_down, move_board_left] 
     
     while queue:
         state, moves = queue.popleft()
