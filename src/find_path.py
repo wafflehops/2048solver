@@ -37,7 +37,6 @@ def find_path_bfs(board):
         if game_won(state):
             return moves 
 
-    
         for direction, move, in enumerate(movement_funcs, start=1):
             moved_board = move(state)
             if generate_key(moved_board) not in visited:
