@@ -7,6 +7,8 @@ import functools
 class Game(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self)
+        self.num_cols = 4
+        self.num_rows = 4
         self.grid()
         self.master.title('2048 solver')
         self.main_grid = tk.Frame(self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
@@ -19,13 +21,14 @@ class Game(tk.Frame):
         self.mainloop()
 
 
+
     def make_GUI(self):
         self.cells = []
-        self.matrix = [[0] * 4 for _ in range(4)]
+        self.matrix = [[0] * 4 for _ in range(self.num_rows)]
 
-        for i in range(4):
+        for i in range(self.num_rows):
             row = []
-            for j in range(4):
+            for j in range(self.num_cols):
                 cell_button = tk.Button(
                     self.main_grid,
                     bg=c.EMPTY_CELL_COLOR,
@@ -60,13 +63,13 @@ class Game(tk.Frame):
 
         
     def solve(self):
-       self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(4)] for i in range(4)]
+       self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(self.num_cols)] for i in range(self.num_rows)]
        print(find_path_bfs(self.matrix))
     
 
     def update_GUI(self):
-        for i in range(4):
-            for j in range(4):
+        for i in range(self.num_rows):
+            for j in range(self.num_cols):
                 cell_num = self.matrix[i][j]
                 self.cells[i][j].configure(
                     bg=c.CELL_COLORS[cell_num],
