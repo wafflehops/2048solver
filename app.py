@@ -38,12 +38,12 @@ class Game(tk.Frame):
                 row.append(cell_button)
             self.cells.append(row)
         
-        self.start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=40, anchor="center")
+        self.start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=65, anchor="center")
 
         self.enter_size_entry = tk.Entry(self)
-        self.enter_size_entry.place(relx=.1, rely=.035, anchor='center')
+        self.enter_size_entry.place(relx=.5, y=10, anchor='center')
 
-        self.set_dimensions_button = tk.Button(self, text='set size', command=self.set_size).place(relx=.25, rely=.035, anchor='center')
+        self.set_dimensions_button = tk.Button(self, text='set size', command=self.set_size).place(relx=.5, y=35, anchor='center')
     
        
     def set_size(self):
