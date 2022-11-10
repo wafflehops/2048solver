@@ -41,13 +41,11 @@ class Game(tk.Frame):
         self.start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=40, anchor="center")
 
         self.enter_size_entry = tk.Entry(self)
-        self.enter_size_entry.place(relx=.1, rely=.02, anchor='center')
+        self.enter_size_entry.place(relx=.1, rely=.035, anchor='center')
 
-        
-        self.enter_rows_button = tk.Button(self, text='set size', command=self.set_size).place(relx=.25, rely=.035, anchor='center')
-        self.enter_rows_button = tk.Button(self, text='get_matrix', command=self.get_matrix).place(relx=.78, rely=.035, anchor='center')
-       
+        self.set_dimensions_button = tk.Button(self, text='set size', command=self.set_size).place(relx=.25, rely=.035, anchor='center')
     
+       
     def set_size(self):
         self.size = int(self.enter_size_entry.get())
        
@@ -55,9 +53,6 @@ class Game(tk.Frame):
             widget.destroy()
 
         self.make_GUI()
-    
-    def get_matrix(self):
-        print(self.matrix)
     
     
     def toggle_tile(self, row, col):
