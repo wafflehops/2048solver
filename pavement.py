@@ -17,7 +17,7 @@ def setup():
 
 @task
 def test():
-    sh('python -m coverage run --source src --omit src/find_path.py -m unittest discover -s test') 
+    sh('python -m coverage run --source src -m unittest discover -s test') 
     sh('python -m coverage html')
     sh('python -m coverage report --show-missing')
     pass
