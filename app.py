@@ -7,8 +7,7 @@ import functools
 class Game(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self)
-        self.num_cols = 4
-        self.num_rows = 4
+        self.size = 4
         self.grid()
         self.master.title('2048 solver')
         self.main_grid = tk.Frame(self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
@@ -24,11 +23,10 @@ class Game(tk.Frame):
 
     def make_GUI(self):
         self.cells = []
-        self.matrix = [[0] * 4 for _ in range(self.num_rows)]
-
-        for i in range(self.num_rows):
+        self.matrix = [[0] * self.size for _ in range(self.size)]
+        for i in range(self.size):
             row = []
-            for j in range(self.num_cols):
+            for j in range(self.size):
                 cell_button = tk.Button(
                     self.main_grid,
                     bg=c.EMPTY_CELL_COLOR,
@@ -40,7 +38,27 @@ class Game(tk.Frame):
                 row.append(cell_button)
             self.cells.append(row)
         
-        start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=40, anchor="center")
+        self.start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=40, anchor="center")
+
+        self.enter_size_entry = tk.Entry(self)
+        self.enter_size_entry.place(relx=.1, rely=.02, anchor='center')
+
+        
+        self.enter_rows_button = tk.Button(self, text='set size', command=self.set_size).place(relx=.25, rely=.035, anchor='center')
+        self.enter_rows_button = tk.Button(self, text='get_matrix', command=self.get_matrix).place(relx=.78, rely=.035, anchor='center')
+       
+    
+    def set_size(self):
+        self.size = int(self.enter_size_entry.get())
+       
+        for widget in self.main_grid.winfo_children():
+            widget.destroy()
+
+        self.make_GUI()
+    
+    def get_matrix(self):
+        print(self.matrix)
+    
     
     def toggle_tile(self, row, col):
         button = self.cells[row][col]
@@ -63,13 +81,13 @@ class Game(tk.Frame):
 
         
     def solve(self):
-       self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(self.num_cols)] for i in range(self.num_rows)]
+       self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(self.size)] for i in range(self.size)]
        print(find_path_bfs(self.matrix))
     
 
     def update_GUI(self):
-        for i in range(self.num_rows):
-            for j in range(self.num_cols):
+        for i in range(self.size):
+            for j in range(self.size):
                 cell_num = self.matrix[i][j]
                 self.cells[i][j].configure(
                     bg=c.CELL_COLORS[cell_num],
