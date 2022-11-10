@@ -1,8 +1,8 @@
 import unittest
 from src.find_path import find_path_bfs
 
-class FindPathTest(unittest.TestCase):
 
+class FindPathTest(unittest.TestCase):
     def test_find_path1(self):
         board = [
             [2048, 2, 2, 2, 2],
@@ -26,6 +26,7 @@ class FindPathTest(unittest.TestCase):
 
         self.assertEqual('impossible', find_path_bfs(board) )
     
+
     def test_find_path3(self):
         board = [
             [2, 2048, 2048, 0, 2048, 0, 2048, 0, 0, 0],
@@ -42,6 +43,7 @@ class FindPathTest(unittest.TestCase):
 
         self.assertEqual('14323432', find_path_bfs(board) )
     
+
     def test_find_path4(self):
         board = [
             [2, 2048, 2048,    0, 2048,    0, 2048,    0,    0,    0],
@@ -58,6 +60,7 @@ class FindPathTest(unittest.TestCase):
 
         self.assertEqual('impossible', find_path_bfs(board) )
     
+
     def test_find_path5(self):
         board = [
             [2,    0,    0,    0, 2048,    0, 2048,   0],
@@ -72,6 +75,7 @@ class FindPathTest(unittest.TestCase):
 
         self.assertEqual('23432341232', find_path_bfs(board) )
     
+
     def test_find_path6(self):
         board = [
             [0, 0, 0],
