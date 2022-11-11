@@ -36,11 +36,17 @@ def clean():
     pass
 
 @task
+def run():
+    sh('python -m app')
+    pass
+
+@task
 def radon():
     sh('radon cc src -a -nb')
     sh('radon cc src -a -nb > radon.report')
     if os.stat("radon.report").st_size != 0:
         raise Exception('radon found complex code')
+
 
 @task
 @needs(['setup', 'clean', 'test', 'radon'])

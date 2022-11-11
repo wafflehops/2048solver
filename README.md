@@ -8,7 +8,7 @@ Differences:
   4. No new tiles are generated during play (unless you choose to set them yourself)
 
 To run:
->python app.py
+>python app.py or paver run
 
 To play:
 >Set size of the board and toggle through cells to set their starting states
@@ -18,10 +18,18 @@ To play:
 >Use arrow keys and follow along to verify yourself.
 
 
-If state can't be won within 15 moves, the 'solve' button will tell you so. 
+If the board is unsolvable, you'll get 'impossible'
 
 This is due to:
   1. Total sum of starting tiles is not equivalent to a normal 2048 tile piece (2, 4, 8, 16, 32, ..etc)
       -> I.E., tiles cannot be combined into one
   2. A wall is blocking movement of tiles
+
+
+To test:
+>paver
+
+To clean test files:
+>paver clean
+
   
