@@ -2,6 +2,7 @@ import tkinter as tk
 import colors as c
 from src.find_path import *
 import functools
+import tkinter.messagebox
 
 
 class Game(tk.Frame):
@@ -20,7 +21,6 @@ class Game(tk.Frame):
         self.mainloop()
 
 
-
     def make_GUI(self):
         self.cells = []
         self.matrix = [[0] * self.size for _ in range(self.size)]
@@ -29,8 +29,8 @@ class Game(tk.Frame):
             for j in range(self.size):
                 cell_button = tk.Button(
                     self.main_grid,
-                    bg=c.EMPTY_CELL_COLOR,
-                    font=("Helvetica", 45, "bold"),
+                    bg=c.CELL_COLORS[0],
+                    font=("Helvetica", 160//self.size, "bold"),
                     height=2, 
                     width=5, 
                     command=functools.partial(self.toggle_tile, i, j))
@@ -38,7 +38,7 @@ class Game(tk.Frame):
                 row.append(cell_button)
             self.cells.append(row)
         
-        self.start_button = tk.Button(self, text="start", command=self.solve).place(relx=0.5, y=65, anchor="center")
+        self.start_button = tk.Button(self, text="solve", command=self.solve).place(relx=0.5, y=65, anchor="center")
 
         self.enter_size_entry = tk.Entry(self)
         self.enter_size_entry.place(relx=.5, y=10, anchor='center')
@@ -47,13 +47,30 @@ class Game(tk.Frame):
     
        
     def set_size(self):
-        self.size = int(self.enter_size_entry.get())
-       
-        for widget in self.main_grid.winfo_children():
-            widget.destroy()
+        try:
+            if self.enter_size_entry.get() == "":
+                raise Exception("enter a number in the box")
 
-        self.make_GUI()
-    
+            try:
+                entry = int(self.enter_size_entry.get())
+            except:
+                raise Exception('nice try')
+
+            if entry < 0:
+                raise ValueError('no sir no negatives here buddy')
+            
+            if entry > 30:
+                raise Exception('Are you trying to crash your computer?')
+
+            self.size = int(self.enter_size_entry.get())
+
+            for widget in self.main_grid.winfo_children():
+                widget.destroy()
+            
+            self.make_GUI()
+        except Exception as e:
+            tkinter.messagebox.showinfo(title=None, message=e)
+
     
     def toggle_tile(self, row, col):
         button = self.cells[row][col]
@@ -77,8 +94,25 @@ class Game(tk.Frame):
         
     def solve(self):
        self.matrix = [[0 if self.cells[i][j].cget('text') == "" else int(self.cells[i][j].cget('text')) for j in range(self.size)] for i in range(self.size)]
-       print(find_path_bfs(self.matrix))
+       path = self.translate_moves(find_path_bfs(self.matrix))
+       res = tk.Toplevel(self)
+       tk.Label(res, text=path).place(relx=.5,rely=0.5, anchor='center')
+
     
+    def translate_moves(self, moves):
+        if moves == 'impossible':
+            return 'impossible'
+        if moves == '':
+            return 'already solved'
+
+        translated_moves = ""
+        directions = [",", "Up\n", "Right\n", "Down\n", "Left\n"]
+
+        for move in moves:
+            translated_moves += directions[int(move)]
+        
+        return translated_moves
+
 
     def update_GUI(self):
         for i in range(self.size):
